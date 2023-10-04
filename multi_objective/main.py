@@ -496,6 +496,10 @@ def parse_args():
         settings.update(s.mslr)
     elif args.dataset == 'fonseca':
         settings.update(s.fonseca)
+    elif args.dataset == 'zdt1':
+        settings.update(s.ZDT1)
+    elif args.dataset == 'zdt2':
+        settings.update(s.ZDT2)    
     elif args.dataset == 'zdt3':
         settings.update(s.ZDT3)
     elif args.dataset == 'dtlz7':
