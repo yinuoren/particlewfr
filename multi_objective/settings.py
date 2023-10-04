@@ -186,7 +186,7 @@ ZDT3 = dict(
     param_dim = 30,
     # for cosmos
     lamda = .5,
-    alpha = [.5, .5],
+    alpha = .5,
     # for argmo
     warm = 200,
     p_lr = 0,
