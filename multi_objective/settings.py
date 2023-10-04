@@ -287,7 +287,7 @@ DTLZ7 = dict(
     param_dim = 30,
     # for cosmos
     lamda = .5,
-    alpha = [.5, .5, .5],
+    alpha = [.5, .1, .5],
     # for argmo
     warm = 200,
     p_lr = 0,
@@ -300,7 +300,7 @@ DTLZ7 = dict(
     M = 10., # birth-death magnitude
     width = 1., # width for the kernel
     initialization = 'random', # 'zero' or 'random'
-    reference_point=[1., 1., 10.],
+    reference_point=[1., 1., 6.],
 )
 
 #
