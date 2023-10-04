@@ -21,6 +21,9 @@ def from_objectives(objectives, train=False, **kwargs):
             obj.Fonseca2: Fonseca2,
             obj.ZDT3_1: ZDT3_1,
             obj.ZDT3_2: ZDT3_2,
+            obj.DTLZ7_1: DTLZ7_1,
+            obj.DTLZ7_2: DTLZ7_2,
+            obj.DTLZ7_3: DTLZ7_3,
         }
     else:
         scores = {
@@ -225,3 +228,20 @@ class ZDT3_2(BaseScore):
         g = 1 + 9 * torch.sum(logits[1:]) / (logits.numel() - 1)
         h = 1 - torch.sqrt(f1 / g) - (f1 / g) * torch.sin(10 * math.pi * f1)
         return (g * h).item() + 1.
+    
+class DTLZ7_1(BaseScore):
+    
+    def __call__(self, logits, **kwargs):
+        return logits[0].item()
+    
+class DTLZ7_2(BaseScore):
+    
+    def __call__(self, logits, **kwargs):
+        return logits[1].item()
+    
+class DTLZ7_3(BaseScore):
+    
+    def __call__(self, logits, **kwargs):
+        g = 1 + 9 * torch.mean(logits[2:])
+        h = 3 - logits[0] / (1 + g) * (1 + torch.sin(3 * math.pi * logits[0])) - logits[1] / (1 + g) * (1 + torch.sin(3 * math.pi * logits[1]))
+        return ((1 + g) * h).item() 

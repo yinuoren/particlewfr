@@ -17,6 +17,9 @@ def from_name(names, task_names, mtl, **kwargs):
         'Fonseca2': Fonseca2,
         'ZDT3_1': ZDT3_1,
         'ZDT3_2': ZDT3_2,
+        'DTLZ7_1': DTLZ7_1,
+        'DTLZ7_2': DTLZ7_2,
+        'DTLZ7_3': DTZL7_3,
     }
 
 
@@ -246,3 +249,33 @@ class ZDT3_2():
         g = 1 + 9 * torch.mean(logits[1:])
         h = 1 - torch.sqrt(f1 / g) - (f1 / g) * torch.sin(10 * math.pi * f1)
         return g * h + 1.
+    
+    
+class DTLZ7_1():
+    
+    def __init__(self, label_name='labels', logits_name='logits'):
+        self.label_name = label_name
+        self.logits_name = logits_name
+    
+    def __call__(self, logits, **kwargs):
+        return logits[0]
+    
+class DTLZ7_2():
+    
+    def __init__(self, label_name='labels', logits_name='logits'):
+        self.label_name = label_name
+        self.logits_name = logits_name
+        
+    def __call__(self, logits, **kwargs):
+        return logits[1]
+    
+class DTZL7_3():
+    
+    def __init__(self, label_name='labels', logits_name='logits'):
+        self.label_name = label_name
+        self.logits_name = logits_name
+        
+    def __call__(self, logits, **kwargs):
+        g = 1 + 9 * torch.mean(logits[2:])
+        h = 3 - logits[0] / (1 + g) * (1 + torch.sin(3 * math.pi * logits[0])) - logits[1] / (1 + g) * (1 + torch.sin(3 * math.pi * logits[1]))
+        return (1 + g) * h 
