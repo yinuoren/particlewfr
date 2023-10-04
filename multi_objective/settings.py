@@ -222,7 +222,7 @@ DTLZ7 = dict(
     alpha = [.5, .1, .5],
     # for argmo
     warm = 200,
-    p_lr = 0,
+    p_lr = 1e-3,
     const = 0.1,
     # for particle
     alpha2 = 5e-1,  # dominance magnitude
