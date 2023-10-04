@@ -19,7 +19,7 @@ def from_name(names, task_names, mtl, **kwargs):
         'ZDT3_2': ZDT3_2,
         'DTLZ7_1': DTLZ7_1,
         'DTLZ7_2': DTLZ7_2,
-        'DTLZ7_3': DTZL7_3,
+        'DTLZ7_3': DTLZ7_3,
     }
 
 
@@ -269,7 +269,7 @@ class DTLZ7_2():
     def __call__(self, logits, **kwargs):
         return logits[1]
     
-class DTZL7_3():
+class DTLZ7_3():
     
     def __init__(self, label_name='labels', logits_name='logits'):
         self.label_name = label_name
