@@ -293,7 +293,7 @@ generic = dict(
     seed=1,
     
     # Directory for logging the results
-    logdir='results/wfr',
+    logdir='results',
 
     # dataloader worker threads
     num_workers=0,
