@@ -15,6 +15,10 @@ def from_name(names, task_names, mtl, **kwargs):
         'InnerProductUtility': InnerProductUtility,
         'Fonseca1': Fonseca1,
         'Fonseca2': Fonseca2,
+        'ZDT1_1': ZDT1_1,
+        'ZDT1_2': ZDT1_2,
+        'ZDT2_1': ZDT2_1,
+        'ZDT2_2': ZDT2_2,
         'ZDT3_1': ZDT3_1,
         'ZDT3_2': ZDT3_2,
         'DTLZ7_1': DTLZ7_1,
@@ -228,6 +232,45 @@ class Fonseca2():
     def __call__(self, logits, **kwargs):
         return Fonseca2.f2(logits)
 
+class ZDT1_1():
+    
+    def __init__(self, label_name='labels', logits_name='logits'):
+        self.label_name = label_name
+        self.logits_name = logits_name
+        
+    def __call__(self, logits, **kwargs):
+        return logits[0]
+    
+class ZDT1_2():
+    
+    def __init__(self, label_name='labels', logits_name='logits'):
+        self.label_name = label_name
+        self.logits_name = logits_name
+        
+    def __call__(self, logits, **kwargs):
+        g = 1 + 9 * torch.mean(logits[1:])
+        h = 1 - torch.sqrt(logits[0] / g)
+        return g * h 
+    
+class ZDT2_1():
+    
+    def __init__(self, label_name='labels', logits_name='logits'):
+        self.label_name = label_name
+        self.logits_name = logits_name
+        
+    def __call__(self, logits, **kwargs):
+        return logits[0]
+    
+class ZDT2_2():
+    
+    def __init__(self, label_name='labels', logits_name='logits'):
+        self.label_name = label_name
+        self.logits_name = logits_name
+        
+    def __call__(self, logits, **kwargs):
+        g = 1 + 9 * torch.mean(logits[1:])
+        h = 1 - (logits[0] / g) ** 2
+        return g * h
 
 class ZDT3_1():
     

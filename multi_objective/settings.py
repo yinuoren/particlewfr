@@ -168,6 +168,74 @@ fonseca = dict(
     initialization='zero', # 'zero' or 'random'
 )
 
+
+ZDT1 = dict(
+    dataset = 'ZDT3',
+    dim = (0,),
+    arch = [128, 1024],
+    objectives = ['ZDT3_1', 'ZDT3_2'],
+    epochs = 3000,
+    use_scheduler = False,
+    train_eval_every= 50,
+    eval_every=0,
+    n_test_rays=50,
+    lr = 1e-4,
+    clip = [0., 1.],
+    n_particles = 50,
+    #This is an explicit example
+    explicit=True,
+    param_dim = 30,
+    # for cosmos
+    lamda = .5,
+    alpha = .5,
+    # for argmo
+    warm = 200,
+    p_lr = 0,
+    const = 0.1,
+    # for particle
+    alpha2 = 5e-1,  # dominance magnitude
+    beta = 1e-4,    # repulsion magnitude
+    G_type = 'coulomb', # 'gaussian' or 'coulomb' or 'lj' or 'cauchy'
+    gamma = 1e-4,   # noise level
+    M = 10., # birth-death magnitude
+    width = 1., # width for the kernel
+    initialization = 'random', # 'zero' or 'random'
+)
+
+
+ZDT2 = dict(
+    dataset = 'ZDT3',
+    dim = (0,),
+    arch = [128, 1024],
+    objectives = ['ZDT3_1', 'ZDT3_2'],
+    epochs = 3000,
+    use_scheduler = False,
+    train_eval_every= 50,
+    eval_every=0,
+    n_test_rays=50,
+    lr = 1e-4,
+    clip = [0., 1.],
+    n_particles = 50,
+    #This is an explicit example
+    explicit=True,
+    param_dim = 30,
+    # for cosmos
+    lamda = .5,
+    alpha = .5,
+    # for argmo
+    warm = 200,
+    p_lr = 0,
+    const = 0.1,
+    # for particle
+    alpha2 = 5e-1,  # dominance magnitude
+    beta = 1e-4,    # repulsion magnitude
+    G_type = 'coulomb', # 'gaussian' or 'coulomb' or 'lj' or 'cauchy'
+    gamma = 1e-4,   # noise level
+    M = 10., # birth-death magnitude
+    width = 1., # width for the kernel
+    initialization = 'random', # 'zero' or 'random'
+)
+
 ZDT3 = dict(
     dataset = 'ZDT3',
     dim = (0,),

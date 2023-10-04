@@ -19,6 +19,10 @@ def from_objectives(objectives, train=False, **kwargs):
             obj.ListNetLoss: ListNetLoss,
             obj.Fonseca1: Fonseca1,
             obj.Fonseca2: Fonseca2,
+            obj.ZDT1_1: ZDT1_1,
+            obj.ZDT1_2: ZDT1_2,
+            obj.ZDT2_1: ZDT2_1,
+            obj.ZDT2_2: ZDT2_2,
             obj.ZDT3_1: ZDT3_1,
             obj.ZDT3_2: ZDT3_2,
             obj.DTLZ7_1: DTLZ7_1,
@@ -215,6 +219,29 @@ class Fonseca2(BaseScore):
     def __call__(self, **kwargs):
         return Fonseca2.f2(kwargs[self.logits_name]).cpu().item()
     
+class ZDT1_1(BaseScore):
+    
+    def __call__(self, logits, **kwargs):
+        return logits[0].item()
+    
+class ZDT1_2(BaseScore):
+    
+    def __call__(self, logits, **kwargs):
+        g = 1 + 9 * torch.sum(logits[1:]) / (logits.numel() - 1)
+        h = 1 - torch.sqrt(logits[0] / g)
+        return (g * h).item() 
+    
+class ZDT2_1(BaseScore):
+    
+    def __call__(self, logits, **kwargs):
+        return logits[0].item()
+    
+class ZDT2_2(BaseScore):
+    
+    def __call__(self, logits, **kwargs):
+        g = 1 + 9 * torch.sum(logits[1:]) / (logits.numel() - 1)
+        h = 1 - (logits[0] / g) ** 2
+        return (g * h).item()
     
 class ZDT3_1(BaseScore):
     
