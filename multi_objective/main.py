@@ -498,6 +498,8 @@ def parse_args():
         settings.update(s.fonseca)
     elif args.dataset == 'zdt3':
         settings.update(s.ZDT3)
+    elif args.dataset == 'dtlz7':
+        settings.update(s.DTLZ7)
     
     settings['seed'] = args.seed
 
