@@ -170,10 +170,10 @@ fonseca = dict(
 
 
 ZDT1 = dict(
-    dataset = 'ZDT3',
+    dataset = 'ZDT1',
     dim = (0,),
     arch = [128, 1024],
-    objectives = ['ZDT3_1', 'ZDT3_2'],
+    objectives = ['ZDT1_1', 'ZDT1_2'],
     epochs = 3000,
     use_scheduler = False,
     train_eval_every= 50,
@@ -204,10 +204,10 @@ ZDT1 = dict(
 
 
 ZDT2 = dict(
-    dataset = 'ZDT3',
+    dataset = 'ZDT2',
     dim = (0,),
     arch = [128, 1024],
-    objectives = ['ZDT3_1', 'ZDT3_2'],
+    objectives = ['ZDT2_1', 'ZDT2_2'],
     epochs = 3000,
     use_scheduler = False,
     train_eval_every= 50,
