@@ -187,10 +187,10 @@ ZDT1 = dict(
     param_dim = 30,
     # for cosmos
     lamda = .5,
-    alpha = .5,
+    alpha = .1,
     # for argmo
-    warm = 200,
-    p_lr = 0,
+    warm = 500,
+    p_lr = 5e-4,
     const = 0.1,
     # for particle
     alpha2 = 5e-1,  # dominance magnitude
@@ -221,10 +221,10 @@ ZDT2 = dict(
     param_dim = 30,
     # for cosmos
     lamda = .5,
-    alpha = .5,
+    alpha = .1,
     # for argmo
-    warm = 200,
-    p_lr = 0,
+    warm = 500,
+    p_lr = 5e-4,
     const = 0.1,
     # for particle
     alpha2 = 5e-1,  # dominance magnitude
@@ -254,10 +254,10 @@ ZDT3 = dict(
     param_dim = 30,
     # for cosmos
     lamda = .5,
-    alpha = .5,
+    alpha = .1,
     # for argmo
-    warm = 200,
-    p_lr = 0,
+    warm = 500,
+    p_lr = 5e-4,
     const = 0.1,
     # for particle
     alpha2 = 5e-1,  # dominance magnitude
