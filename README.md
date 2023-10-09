@@ -1,10 +1,10 @@
-# COSMOS - Efficient Multi-Objective Optimization for Deep Learning
+# ParticleMethodsForMultiObjectiveOptimization
 
-This is the official implementation for COSMOS: a method to learn Pareto fronts that scales to large datasets and deep models.
+This repository include scripts to reproduce experiments for profiling the Pareto front in Multi-Objective Optimization (MOO).
+
+The implementation is based on the official implementation for COSMOS: a method to learn Pareto fronts that scales to large datasets and deep models.
 
 For details see paper.
-
-![Pareto Front for CelebA](res/pareto_front_celeba.png)
 
 ## Usage
 
@@ -12,7 +12,7 @@ For details see paper.
 1. Run the code:
 
 ```bash
-python multi_objective/main.py --dataset mm --method cosmos
+python multi_objective/main.py --dataset mslr --method particle
 ```
 
 For the logs and results see newly created folder `results`.
@@ -25,13 +25,6 @@ Available datasets:
 
 | command-line option  | Description                  |
 |----------------------|------------------------------|
-| `-d mm`              | Multi-MNIST dataset          |
-| `-d mf`              | Multi-Fashion dataset        |
-| `-d mfm`             | Multi-Fashion+MNIST dataset  |
-| `-d adult`           | Adult dataset                |
-| `-d compass`         | Compass dataset              |
-| `-d default`         | Default dataset              |
-| `-d celeba`          | CelebA dataset               |
 | `-d mslr`            | MSLR-WEB10K dataset          |
 
 
@@ -39,24 +32,27 @@ Available datasets:
 
 Available algorithms:
 
-| command-line option  | Description                         |
-|----------------------|-------------------------------------|
-| `-m cosmos`          | COSMOS algorithm                    | 
-| `-m hyper_ln`        | PHN (Linear Scalarization) algorithm [1] | 
-| `-m hyper_epo`       | PHN (EPO) algorithm [1]             | 
-| `-m pmtl`            | ParetoMTL algorithm [2]             | 
-| `-m single_task`     | Treat each objective as single task | 
-| `-m uniform`         | Uniform scaling of all objectives   | 
-| `-m argmo_hv`        | ARGMO wrt hypervolume               |
-| `-m argmo_kernel`    | ARGMO with kernel                   |
+| command-line option  | Description                                         |
+|----------------------|-----------------------------------------------------|
+| `-m cosmos`          | COSMOS algorithm [1]                                | 
+| `-m hyper_ln`        | PHN (Linear Scalarization) algorithm [2]            | 
+| `-m hyper_epo`       | PHN (EPO) algorithm [2]                             | 
+| `-m pmtl`            | ParetoMTL algorithm [3]                             | 
+| `-m single_task`     | Treat each objective as single task                 | 
+| `-m uniform`         | Uniform scaling of all objectives                   | 
+| `-m argmo_hv`        | ARGMO wrt hypervolume [4]                           |
+| `-m argmo_kernel`    | ARGMO with kernel [4]                               |
+| `-m particle`        | Particle methods with Wasserstein-Fisher-Rao flow   |
 
 
-[1] Navon, A., Shamsian, A., Chechik, G. and Fetaya, E., 2020. Learning the Pareto Front with Hypernetworks. arXiv preprint arXiv:2010.04104.
+[1] Ruchte, Michael, and Josif Grabocka. "Scalable pareto front approximation for deep multi-objective learning." 2021 IEEE international conference on data mining (ICDM). IEEE, 2021.
 
-[2] Lin, X., Zhen, H.L., Li, Z., Zhang, Q. and Kwong, S., 2019. Pareto multi-task learning. arXiv preprint arXiv:1912.12854.
+[2] Navon, Aviv, et al. "Learning the Pareto Front with Hypernetworks." International Conference on Learning Representations. 2020.
 
+[3] Lin, Xi, et al. "Pareto multi-task learning." Advances in neural information processing systems 32 (2019).
 
-![Pareto Front for Multi-MNIST](res/pareto_front_multi_mnist.png)
+[4] Chen, Weiyu, and James Kwok. "Multi-Objective Deep Learning with Adaptive Reference Vectors." Advances in Neural Information Processing Systems 35 (2022): 32723-32735.
+
 
 ## Installation
 
@@ -88,5 +84,5 @@ The large number of dependencies is partly due to the baselines, available in th
 
 ## Acknowledgments
 
-To be done.
+We thank the authors of [1] for creating a helpful code framework to compare different algorithms. We are also thankful to the authors of [4] for sharing their code, contributing significantly to our research.
 
