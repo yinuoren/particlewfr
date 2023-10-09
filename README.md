@@ -26,7 +26,10 @@ Available datasets:
 | command-line option  | Description                  |
 |----------------------|------------------------------|
 | `-d mslr`            | MSLR-WEB10K dataset          |
-
+| `-d zdt1`            | ZDT1 Problem                 |
+| `-d zdt2`            | ZDT2 Problem                 |
+| `-d zdt3`            | ZDT3 Problem                 |
+| `-d dtlz7`           | DTLZ7 Problem                |
 
 ---
 
@@ -52,6 +55,8 @@ Available algorithms:
 [3] Lin, Xi, et al. "Pareto multi-task learning." Advances in neural information processing systems 32 (2019).
 
 [4] Chen, Weiyu, and James Kwok. "Multi-Objective Deep Learning with Adaptive Reference Vectors." Advances in Neural Information Processing Systems 35 (2022): 32723-32735.
+
+[5] Liu, Xingchao, Xin Tong, and Qiang Liu. "Profiling pareto front with multi-objective stein variational gradient descent." Advances in Neural Information Processing Systems 34 (2021): 14721-14733.
 
 
 ## Installation
@@ -84,5 +89,5 @@ The large number of dependencies is partly due to the baselines, available in th
 
 ## Acknowledgments
 
-We thank the authors of [1] for creating a helpful code framework to compare different algorithms. We are also thankful to the authors of [4] for sharing their code, contributing significantly to our research.
+We thank the authors of [1] for creating a helpful code framework to compare different algorithms. We are also thankful to the authors of [4, 5] for sharing their code, contributing significantly to our research.
 
