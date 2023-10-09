@@ -234,7 +234,7 @@ def gradient_normalizers(grads, losses, normalization_type):
         for t in range(len(grads)):
             gn[t] = losses[t] * np.sqrt(np.sum([gr.pow(2).sum().item() for gr in grads[t].values()]))
     elif normalization_type == 'none':
-        for t in grads:
+        for t in range(len(grads)):
             gn[t] = 1.0
     else:
         print('ERROR: Invalid Normalization Type')

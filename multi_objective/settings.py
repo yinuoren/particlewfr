@@ -66,11 +66,12 @@ mslr = dict(
     k_ndcg = 10,
     # for particle
     alpha2 = 100,  # dominance magnitude
-    beta = 1e-3,    # repulsion magnitude
+    beta = 1e-5,    # repulsion magnitude
     G_type = 'gaussian', # 'gaussian' or 'coulomb' or 'lj' or 'cauchy'
     gamma = 0,   # noise level
     M = 30., # birth-death magnitude
     width = 1e-4, # width for the kernel
+    tau = 1, # weight of MGDA
 )
 
 multi_mnist = dict(
@@ -356,7 +357,7 @@ hyperSolver_epo = dict(
 
 argmo_kernel = dict(
     method='argmo',
-    n_particles=15,
+    n_particles=8,
     p_lr=5e-3, # 5e-3 for kernel-based
     rv_method='kernel',
     warm=1,
@@ -366,7 +367,7 @@ argmo_kernel = dict(
 
 argmo_hv = dict(
     method='argmo',
-    n_particles=12,
+    n_particles=8,
     p_lr=5e-4,
     rv_method='hv',
     warm=1,
@@ -376,8 +377,8 @@ argmo_hv = dict(
 
 particle = dict(
     method='particle',
-    n_particles=12,
-    normalization_type='loss+',
+    n_particles=8,
+    normalization_type='none', # 'l2' 'loss' 'loss+' 'none'
     alpha2 = 5e-3,  # dominance magnitude
     beta = 1e-4,    # repulsion magnitude
     G_type = 'gaussian', # 'gaussian' or 'coulomb' or 'lj' or 'cauchy'
@@ -401,7 +402,7 @@ generic = dict(
     num_workers=0,
 
     # Number of test preference vectors for Pareto front generating methods    
-    n_test_rays=12,
+    n_test_rays=8,
 
     # Evaluation period for val and test sets (0 for no evaluation)
     eval_every=5,

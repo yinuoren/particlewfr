@@ -61,7 +61,7 @@ def get_kernel(rank, losses, name = 'gaussian', width = 1.): # losses.shape = (n
 
 class ParticleMethod(BaseMethod):
 
-    def __init__(self, objectives, n_particles, normalization_type, alpha2, beta, G_type, gamma, M, **kwargs):
+    def __init__(self, objectives, n_particles, normalization_type, alpha2, beta, G_type, gamma, M, width, tau, **kwargs):
         self.objectives = objectives
         self.K = len(objectives)
         self.n_particles = n_particles
@@ -74,6 +74,8 @@ class ParticleMethod(BaseMethod):
         self.G_type = G_type
         self.gamma = gamma
         self.M = M
+        self.width = width
+        self.tau = tau
 
         self.rays = circle_points(n_particles, dim = self.K)
         
@@ -98,21 +100,36 @@ class ParticleMethod(BaseMethod):
         self.model.zero_grad()
 
         logits_per_net = self.model(batch)
-        
+
         loss_all_nets = None
         loss_per_net = torch.zeros((self.n_particles, self.K)).to(rank)
+
+        ## SVGD
+        # for i in range(self.n_particles):
+        #     batch.update(logits_per_net[i])
+        #     for (k, (a, objective)) in enumerate(zip(sol_per_net[i], self.objectives)):
+        #         task_loss = objective(**batch)
+        #         loss_per_net[i, k] = task_loss
+            
+        # G = get_kernel(rank, loss_per_net, name = 'gaussian', width = self.width)
+        
+        # G_np = G.detach().cpu().numpy()
+        # Sol = np.stack(sol_per_net)
+        # Sol = G_np @ Sol / self.K
+        
         for i in range(self.n_particles):
             loss = None
             batch.update(logits_per_net[i])
             for (k, (a, b, objective)) in enumerate(zip(sol_per_net[i], self.rays[i], self.objectives)):
                 task_loss = objective(**batch)
-                w = 0.3 * a + 0.7 * b
+                w = self.tau * a + (1-self.tau) * b
                 loss = w * task_loss if not loss else loss + w * task_loss
                 loss_per_net[i, k] = task_loss
+                # loss = w * loss_per_net[i, k] if not loss else loss + w * loss_per_net[i, k]
             loss_all_nets = loss if not loss_all_nets else loss_all_nets + loss
             
         F2 = get_kernel(rank, loss_per_net, name='radial')
-        G = get_kernel(rank, loss_per_net, name=self.G_type)
+        G = get_kernel(rank, loss_per_net, name=self.G_type, width=self.width)
             
         E = self.alpha2 * F2.sum(dim = 1) + self.beta * G.sum(dim = 1)
         loss_all_nets = loss_all_nets + E.sum()
