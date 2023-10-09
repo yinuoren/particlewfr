@@ -62,14 +62,13 @@ Available algorithms:
 ## Installation
 
 Requirements:
-1. CUDA capable GPU (I will port it for CPU usage in future)
-1. Only tested on Ubuntu 20.04
+1. CUDA capable GPU
 
 Create a venv:
 
 ```bash
-python3 -m venv cosmos
-source cosmos/bin/activate
+python3 -m venv moo
+source moo/bin/activate
 ```
 
 Clone repository:

@@ -377,7 +377,7 @@ argmo_hv = dict(
 
 particle = dict(
     method='particle',
-    n_particles=8,
+    n_particles=16,
     normalization_type='none', # 'l2' 'loss' 'loss+' 'none'
     alpha2 = 5e-3,  # dominance magnitude
     beta = 1e-4,    # repulsion magnitude
