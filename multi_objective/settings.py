@@ -1,6 +1,7 @@
 import random
 # datsets override methods override generic
 
+
 #
 # datasets
 #
@@ -357,7 +358,7 @@ hyperSolver_epo = dict(
 
 argmo_kernel = dict(
     method='argmo',
-    n_particles=8,
+    n_particles=12,
     p_lr=5e-3, # 5e-3 for kernel-based
     rv_method='kernel',
     warm=1,
@@ -367,7 +368,7 @@ argmo_kernel = dict(
 
 argmo_hv = dict(
     method='argmo',
-    n_particles=8,
+    n_particles=12,
     p_lr=5e-4,
     rv_method='hv',
     warm=1,
@@ -377,7 +378,7 @@ argmo_hv = dict(
 
 particle = dict(
     method='particle',
-    n_particles=16,
+    n_particles=12,
     normalization_type='none', # 'l2' 'loss' 'loss+' 'none'
     alpha2 = 5e-3,  # dominance magnitude
     beta = 1e-4,    # repulsion magnitude
