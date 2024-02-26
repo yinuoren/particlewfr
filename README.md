@@ -4,7 +4,7 @@ This repository include scripts to reproduce experiments for profiling the Paret
 
 The implementation is based on the official implementation for COSMOS: a method to learn Pareto fronts that scales to large datasets and deep models.
 
-For details see paper.
+For details see our AISTATS-24 paper [Multi-Objective Optimization via Wasserstein-Fisher-Rao Gradient Flow](https://arxiv.org/abs/2311.13159).
 
 ## Usage
 
