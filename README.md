@@ -1,10 +1,9 @@
 # ParticleMethodsForMultiObjectiveOptimization
 
-This repository include scripts to reproduce experiments for profiling the Pareto front in Multi-Objective Optimization (MOO).
+This is the repository for the AISTATS-24 paper [Multi-Objective Optimization via Wasserstein-Fisher-Rao Gradient Flow](https://arxiv.org/abs/2311.13159).
 
-The implementation is based on the official implementation for COSMOS: a method to learn Pareto fronts that scales to large datasets and deep models.
+The implementation is based on the official implementation for COSMOS: a method to learn Pareto fronts that scales to large datasets and deep models, including scripts to reproduce experiments for profiling the Pareto front in Multi-Objective Optimization (MOO).
 
-For details see our AISTATS-24 paper [Multi-Objective Optimization via Wasserstein-Fisher-Rao Gradient Flow](https://arxiv.org/abs/2311.13159).
 
 ## Usage
 
